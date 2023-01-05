@@ -1,6 +1,6 @@
 # Notebook
 
-In this repository you can see simple notebook project.
+In this repository, you can see simple notebook project.
 
 You can:
 1) view notes;
