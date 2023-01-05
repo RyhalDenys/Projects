@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Update note</title>
+</head>
+<body>
+<div class="main_block">
+
+    <form class="post_form" th:method="Put" th:action="@{/main/notes/note/{id}(id=${note.id})}" th:object="${note}">
+        <input type="hidden" value="Put">
+        <div class="input_name">
+            <label for="name">Enter name</label>
+            <input type="text" id="name" th:field="*{name}">
+            <div class="error" style="color:red" th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Name Error</div>
+        </div>
+
+
+        <div class="input_text">
+            <label for="text">Enter text</label>
+            <textarea id="text" th:field="*{text}"></textarea>
+            <div class="error" style="color:red" th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Name Error</div>
+        </div>
+        <div class="button">
+            <input type="submit" value="Update">
+        </div>
+    </form>
+</div>
+
+<style>
+    .error{
+        margin-top: 10px;
+        margin-bottom: 5px;
+        font-size: 16px;
+    }
+
+    *{
+        padding: 0;
+        margin: 0;
+        border: 0;
+    }
+
+    *,::before,*::after{
+        -moz-box-sizing: border-box;
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+    }
+
+    :focus,:active{outline: none;}
+    a:focus,a:active{outline: none;}
+
+    nav,footer,header,aside{display: block;}
+
+    html,body{
+        font-family: 'Charis SIL', serif;
+        height: 100%;
+        width: 100%;
+        font-size: 100%;
+        line-height: 1;
+        font-size: 14px;
+        -ms-text-size-adjust: 100%;
+        -moz-text-size-adjust: 100%;
+        -webkit-text-size-adjust: 100%;
+    }
+
+    input,button,textarea{ font-family: inherit;}
+
+    a,a:visited{
+        font-family: 'Charis SIL', serif;
+        text-decoration: none;
+    }
+    ul li{
+        list-style: none;
+    }
+    img{ vertical-align: top;}
+
+    p,div,h1,h2,h3,h4,h5,h6{
+        color: #ffffff;
+    }
+
+    .main_block{
+        max-width: 1240px;
+        margin: 0px auto;
+        padding: 0px 10px;
+    }
+    body{
+        background-color: #333333;
+    }
+
+    .input_name{
+        border-radius: 20px;
+        display: flex;
+        flex-direction: column;
+        margin-top: 60px;
+        padding: 20px;
+        background-color: #2b2b2b;
+    }
+
+    .input_name label{
+        color: white;
+        font-size: 40px;
+        border-radius: 20px;
+    }
+
+    .input_name input{
+        margin-top: 30px;
+        min-width: 200px;
+        background-color: #333333;
+        color: white;
+        font-size: 30px;
+        border-radius: 10px;
+    }
+
+    .input_text{
+        border-radius: 20px;
+        display: flex;
+        flex-direction: column;
+        margin: 20px 0px;
+        padding: 20px;
+        background-color: #2b2b2b;
+    }
+    .input_text label{
+        color: white;
+        font-size: 40px;
+    }
+    .input_text textarea{
+        margin-top: 30px;
+
+        min-width: 500px;
+        min-height: 250px;
+        color: white;
+        font-size: 30px;
+        background-color: #333333;
+        border-radius: 20px;
+        padding: 10px 20px;
+    }
+    .button{
+        margin:30px 0px;
+    }
+    .button input{
+        color: #2b2b2b;
+        font-size: 25px;
+        font-weight: bold;
+        border-radius: 20px;
+        background-color: white;
+        padding: 15px 30px;
+    }
+
+</style>
+
+</body>
+</html>

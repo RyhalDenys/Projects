@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org" lang=uk>
+<head>
+    <meta charset="UTF-8">
+    <title>Нотатки</title>
+</head>
+<body>
+
+    <main class="main_block">
+        <div class="main_body">
+            <div class="main_body_title">All notes </div>
+
+            <div class="main_body_button">
+                <a class="button_add" href="notes/add">Add Note</a>
+            </div>
+
+            <div class="main_body_notes">
+                <ul class="notes" th:each="note:${notes}">
+                    <li class="note">
+                       <div class="note_name" th:text = "${note.name}"></div>
+                        <div class="note_text">
+                            <textarea readonly th:text = "${note.text}"></textarea>
+                        </div>
+                        <div class="note_date" th:text = "${note.createdOn}"></div>
+
+                        <div class="delete_button">
+                            <form th:method="DELETE" th:action="@{/main/notes/{id}(id=${note.id})}">
+                                <input type="submit" value="Delete">
+                            </form>
+                        </div>
+
+                        <div class="update_button">
+                            <a href="#" th:href="@{/main/notes/edit/{id}(id=${note.id})}">Update</a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </main>
+
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+            border: 0;
+        }
+
+        *,::before,*::after{
+            -moz-box-sizing: border-box;
+            -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+        }
+
+        :focus,:active{outline: none;}
+        a:focus,a:active{outline: none;}
+
+        nav,footer,header,aside{display: block;}
+
+        html,body{
+            font-family: 'Charis SIL', serif;
+            height: 100%;
+            width: 100%;
+            font-size: 100%;
+            line-height: 1;
+            font-size: 14px;
+            -ms-text-size-adjust: 100%;
+            -moz-text-size-adjust: 100%;
+            -webkit-text-size-adjust: 100%;
+        }
+
+        input,button,textarea{ font-family: inherit;}
+
+        a,a:visited{
+            font-family: 'Charis SIL', serif;
+            text-decoration: none;
+        }
+        ul li{
+            list-style: none;
+        }
+        img{ vertical-align: top;}
+
+        p,div,h1,h2,h3,h4,h5,h6{
+            color: #ffffff;
+        }
+
+
+        .main_body_title{
+            font-size: 30px;
+            background-color: #2b2b2b;
+            border-radius: 20px;
+        }
+        .main_block{
+            max-width: 1240px;
+            margin: 0px auto;
+            padding: 0px 10px;
+        }
+        body{
+            background-color: #333333;
+        }
+
+        .main_body{
+            padding: 50px;
+        }
+
+        .main_body_title{
+            font-size: 45px;
+            padding: 40px 20px;
+            color: white;
+        }
+
+        .main_body_button{
+            display: flex;
+            margin: 25px 10px;
+        }
+
+        .button_add{
+            border-radius: 20px;
+            background-color: white;
+            padding: 20px 40px;
+            color: #2b2b2b;
+            font-size: 25px;
+        }
+
+        .main_body_notes{
+            border-radius: 20px;
+            background-color: #2b2b2b;
+            margin-top: 60px;
+            padding: 20px 1px;
+        }
+
+        .notes{
+
+            margin: 20px ;
+            border-radius: 20px;
+
+            background-color: #333333;
+        }
+        .note{
+            position: relative;
+        }
+
+        .note_name{
+            border-bottom: 1px solid #ffffff;
+            padding: 7px 20px;
+            padding-bottom: 10px;
+            margin-bottom: 15px;
+            font-size: 33px;
+        }
+
+        .note_text{
+            padding: 5px 20px;
+            font-size: 22px;
+        }
+
+        .note_text textarea{
+            min-width: 500px;
+            height: 250px;
+            background-color: #333333;
+            color: white;
+            font-size: 25px;
+        }
+        .note_date{
+            padding-top: 10px;
+            display: flex;
+            padding-bottom: 15px;
+            justify-content: flex-end;
+            padding-right: 20px;
+        }
+        .delete_button, .update_button{
+            margin: 3px;
+        }
+        .delete_button input, .update_button a{
+            font-size: 16px;
+            color: #2b2b2b;
+            background-color: white;
+            padding: 7px 10px;
+            border-radius: 10px;
+        }
+
+        .delete_button{
+            position: absolute;
+            right: 5px;
+            top: 7px;
+        }
+        .update_button{
+            position: absolute;
+            right: 72px;
+            top: 15px;
+        }
+
+
+    </style>
+
+</body>
+</html>
+
+
